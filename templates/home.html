@@ -1,0 +1,35 @@
+<html></html>
+
+
+<body>
+
+<div >
+  <a href="/logout">Logout</a>
+<p >Welcome {{username}}</p>
+
+<p >Your Trips:</p>
+
+<table border="true">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for trip in trips%}
+    <tr>
+      <td><a href="/trip/view/{{trip['id']}}">{{trip['tname']}}</a></td>
+      <td>{{trip['sdate']}}</td>
+      <td><a href="/trip/delete/{{trip['id']}}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+
+</div>
+<a href="/trip/create/1">Create New Trip</a>
+
+</body>
+
+</html>

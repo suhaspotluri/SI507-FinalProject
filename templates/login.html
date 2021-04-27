@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Trip Weather Login </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/view.css" media="all">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Trip Weather</h2>
+      <h3>Please login</h2>
+      <br>
+      <form action="/login" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Login">
+      </form>
+      {% if error %}
+        <p style="color:red;" class="error">{{ error }}</p>
+      {% endif %}
+    </div>
+    <p>Please contact Suhas Potluri for credentials</p>
+    <a href="mailto:robert@hrstrategy.biz">spotlu@umich.edu</a>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+flask
+flask_session
+config
+mysql_connector
+flask_limiter
+requests_cache
+folium
+openrouteservice

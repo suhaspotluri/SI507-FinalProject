@@ -1,0 +1,31 @@
+
+<html>
+    <a href="/logout">Logout</a>
+    <a href="/">Back</a>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        </style>
+    <form method="post">
+        <label for="tname" >Trip Name</label>
+        <input name="tname" type="text" value="{{trip['tname']}}" required> 
+        <label for="sdate" >Start Date</label>
+        <input name="sdate" type="datetime-local" value="{{trip['sdate']}}" required>
+        <input type="submit" name="Save" value="Save">
+    </form>
+    <h2>Trip Segments:
+    <table>
+        <thead><tr><th>Stop</th><th>Duration</th><th>Distance</th><th></th></tr></thead>
+        {% for seg in segments %}
+        <tr><td>{{seg['sname']}}</td><td>{{seg['duration']}}</td><td>{{seg['distance']}}</td><td><a href="/segment/{{seg['tid']}}/{{trip['uid']}}/delete/{{seg['id']}}">Delete</a></td></tr>
+        {% endfor %}
+        <tr><td>Total:</td><td>{{totals[0]}}</td><td>{{totals[1]}}</td>
+
+        </tr>
+    </table>
+    </h2>
+    <a href="/segment/{{trip['id']}}/{{trip['uid']}}">Add Segment</a>
+    <iframe style='border:none' width='100%' height='100%'  src="/map/{{trip['id']}}"></iframe>
+</html>

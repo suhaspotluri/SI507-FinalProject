@@ -1,0 +1,12 @@
+{{tname}}
+
+<form method="POST" action="/trip/create/0">
+    <label for="tname" >Trip Name</label>
+    <input name="tname" required type="text">
+    <div><input type="submit" value="Create"></div>
+</form>
+{% if duplicate=='True' %}
+<p style="color:red;">Error, username exists</p>
+{% elif duplicate=='Success' %}
+<p style="color:green;">User created</p>
+{% endif %}

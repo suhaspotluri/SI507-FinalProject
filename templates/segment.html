@@ -1,0 +1,43 @@
+<html>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <form action="" method="post">
+        <label for="start">Enter Location</label>
+        <input name="start" list="sap" id="start" required>
+        <datalist id="sap">
+        </datalist>
+        <input type="submit">
+    </form>
+
+
+
+    <script>
+        $("#start").on("change keyup paste", function(){
+    dosomething();
+})
+
+function dosomething(){
+    var dataList = $("#sap");
+    dataList.empty();
+    var sText=document.getElementById("start").value;
+    var sCoors=document.getElementById("start_coors");
+    console.log('Detect')
+    $.getJSON('/search/'+sText, function(data) {
+    // JSON result in `data` variable
+    for(var i=0;i<data['features'].length;i++){
+        console.log(data['features'][i]['properties']['name'])
+        var opt = $("<option></option>").attr("value",data['features'][i]['properties']['label']);
+        //sCoors.setAttribute("value",data['features'][i]['geometry']['coordinates'])
+		dataList.append(opt);
+    }
+
+});
+
+}
+        </script>
+</html>
